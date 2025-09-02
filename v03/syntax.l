@@ -27,6 +27,7 @@
 "+"                  { return _AROP; }
 "-"                  { return _AROP; }
 "++"                 { return _INCREMENT; }
+"--"                 { return _DEC; }
 
 "<"                  { return _RELOP; }
 ">"                  { return _RELOP; }

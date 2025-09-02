@@ -41,6 +41,8 @@
 %token _DOWNTO
 %token _STEP
 
+%token _DEC
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -100,7 +102,6 @@ vars
  /* -----------------------
    Deklaracija sa inicijalizacijom 
    int a = 1; 
-   
    ----------------------- */
 var 
   : _ID
@@ -122,6 +123,7 @@ statement
   | for_statement // Z5
   | function_call_statement // Z6
   | increment_statement // Z4
+  | dec_statement // dodatno
   ;
 
   /* -----------------------
@@ -147,6 +149,10 @@ do_while_statement
    ----------------------- */
 increment_statement
   : _ID _INCREMENT _SEMICOLON
+  ;
+
+dec_statement
+  : _ID _DEC _SEMICOLON
   ;
 
 /* -----------------------
@@ -182,6 +188,7 @@ exp
   : literal
   | _ID
   | _ID _INCREMENT // Zadatak 4
+  | _ID _DEC  // dodatno
   | function_call
   | _LPAREN num_exp _RPAREN
   ;
