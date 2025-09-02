@@ -25,6 +25,7 @@
 %token _RELOP
 
 %token _WHILE
+%token _BREAK
 
 %nonassoc ONLY_IF
 %nonassoc _ELSE
@@ -87,6 +88,7 @@ statement
   | if_statement
   | return_statement
   | while_statement
+  | break_statement
   ;
 
 /* -----------------------
@@ -96,6 +98,12 @@ while_statement
   : _WHILE _LPAREN rel_exp _RPAREN statement
   ;
 
+/* -----------------------
+   Resenje: Zadatak 2 - break
+   ----------------------- */
+break_statement
+  : _BREAK _SEMICOLON
+  ;
 
 compound_statement
   : _LBRACKET statement_list _RBRACKET
