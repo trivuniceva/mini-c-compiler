@@ -8,5 +8,8 @@ int abs(int i) {
 }
 
 int main() {
-  return abs(-5);
+
+  int a = 5;
+
+  return 1;
 }

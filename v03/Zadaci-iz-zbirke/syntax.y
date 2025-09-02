@@ -60,9 +60,19 @@ variable_list
   | variable_list variable
   ;
 
+
+/* -----------------------
+   Resenje: Zadatak 1 - definisanje a
+   ----------------------- */
+
 variable
-  : type _ID _SEMICOLON
+  : type vars _SEMICOLON
   ;
+
+vars 
+  : _ID 
+  | _ID _ASSIGN num_exp
+  ; 
 
 statement_list
   : /* empty */
