@@ -33,6 +33,12 @@
 %token _DO
 %token _WHILE
 
+%token _FOR
+%token _NEXT
+%token _TO
+%token _DOWNTO
+%token _STEP
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -93,6 +99,7 @@ statement
   | return_statement
   | select_statement
   | do_while_statement
+  | for_statement
   ;
 
   /* -----------------------
@@ -111,6 +118,22 @@ condition
    ----------------------- */
 do_while_statement
   : _DO statement _WHILE condition _SEMICOLON
+  ;
+
+/* -----------------------
+   Resenje: Zadatak 5
+   ----------------------- */
+for_statement
+  : _FOR _ID _ASSIGN literal direction literal step statement _NEXT _ID
+
+direction 
+  : _TO
+  | _DOWNTO
+  ;
+
+step
+  : /* empty */
+  | _STEP literal
   ;
 
 compound_statement
