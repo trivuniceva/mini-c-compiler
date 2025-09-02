@@ -33,6 +33,8 @@
 %token _DO
 %token _WHILE
 
+%token _INCREMENT
+
 %token _FOR
 %token _NEXT
 %token _TO
@@ -105,10 +107,11 @@ statement
   | assignment_statement
   | if_statement
   | return_statement
-  | select_statement
-  | do_while_statement
-  | for_statement
-  | function_call_statement
+  | select_statement // Z2
+  | do_while_statement // Z3
+  | for_statement // Z5
+  | function_call_statement // Z6
+  | increment_statement // Z4
   ;
 
   /* -----------------------
@@ -127,6 +130,13 @@ condition
    ----------------------- */
 do_while_statement
   : _DO statement _WHILE condition _SEMICOLON
+  ;
+
+/* -----------------------
+   Resenje: Zadatak 4
+   ----------------------- */
+increment_statement
+  : _ID _INCREMENT _SEMICOLON
   ;
 
 /* -----------------------
@@ -161,6 +171,7 @@ num_exp
 exp
   : literal
   | _ID
+  | _ID _INCREMENT // Zadatak 4
   | function_call
   | _LPAREN num_exp _RPAREN
   ;
