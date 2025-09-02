@@ -13,14 +13,12 @@ int main() {
   int a = 1; 
   unsigned b = 5u, c = 10u;
 
-  if(a < 0) {
-  a--;
-  return 0;
-} else if (a > 0) {
-  return 2;
-} else {
-  return 1;
+  for i = 0 to 10 {
+    if (i == 5)
+        break;
+    a = a + 1;
 }
+next i
   
   return abs(-5);
 }

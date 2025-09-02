@@ -49,6 +49,12 @@
 "downto"             { return _DOWNTO; }
 "step"               { return _STEP; }
 
+"break"              { return _BREAK; }
+"continue"           { return _CONTINUE; }
+
+"switch"             { return _SWITCH; }
+"case"               { return _CASE; }
+
 [a-zA-Z][a-zA-Z0-9]* { return _ID; }
 [+-]?[0-9]{1,10}     { return _INT_NUMBER;}
 [0-9]{1,10}[uU]      { return _UINT_NUMBER;}

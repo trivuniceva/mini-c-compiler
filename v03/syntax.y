@@ -43,6 +43,9 @@
 
 %token _DEC
 
+%token _BREAK
+%token _CONTINUE
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -124,6 +127,20 @@ statement
   | function_call_statement // Z6
   | increment_statement // Z4
   | dec_statement // dodatno
+  | break_statement // dodatno
+  | continue_statement //dodatno
+  ;
+
+
+ /* -----------------------
+   Prosiren for sa break i continue
+   ----------------------- */
+break_statement
+  : _BREAK _SEMICOLON
+  ;
+
+continue_statement
+  : _CONTINUE _SEMICOLON
   ;
 
   /* -----------------------
