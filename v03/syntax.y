@@ -41,6 +41,11 @@
 %token _DOWNTO
 %token _STEP
 
+%token _DEC
+
+%token _BREAK
+%token _CONTINUE
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -93,8 +98,17 @@ variable
    Resenje: Zadatak 1
    ----------------------- */
 vars 
+  : var
+  | vars _COMMA var // zamenjen _ID sa var zbog unsigned b = 5u, c = 10u;
+  ;
+
+ /* -----------------------
+   Deklaracija sa inicijalizacijom 
+   int a = 1; 
+   ----------------------- */
+var 
   : _ID
-  | vars _COMMA _ID
+  | _ID _ASSIGN num_exp
   ;
 
 statement_list
@@ -112,6 +126,21 @@ statement
   | for_statement // Z5
   | function_call_statement // Z6
   | increment_statement // Z4
+  | dec_statement // dodatno
+  | break_statement // dodatno
+  | continue_statement //dodatno
+  ;
+
+
+ /* -----------------------
+   Prosiren for sa break i continue
+   ----------------------- */
+break_statement
+  : _BREAK _SEMICOLON
+  ;
+
+continue_statement
+  : _CONTINUE _SEMICOLON
   ;
 
   /* -----------------------
@@ -137,6 +166,10 @@ do_while_statement
    ----------------------- */
 increment_statement
   : _ID _INCREMENT _SEMICOLON
+  ;
+
+dec_statement
+  : _ID _DEC _SEMICOLON
   ;
 
 /* -----------------------
@@ -172,6 +205,7 @@ exp
   : literal
   | _ID
   | _ID _INCREMENT // Zadatak 4
+  | _ID _DEC  // dodatno
   | function_call
   | _LPAREN num_exp _RPAREN
   ;
