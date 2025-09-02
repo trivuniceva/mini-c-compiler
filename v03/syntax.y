@@ -66,6 +66,9 @@ variable
   : type vars _SEMICOLON
   ;
 
+   /* -----------------------
+   Resenje: Zadatak 1
+   ----------------------- */
 vars 
   : _ID
   | vars _COMMA _ID
