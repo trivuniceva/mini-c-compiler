@@ -21,6 +21,11 @@
 %token  _QUESTION_MARK
 %token  _EXCLAMATION_MARK
 
+/* -----------------------
+   Resenje: Zadatak 2
+   ----------------------- */
+%token _COMMA
+
 %%
 
 text 
@@ -41,10 +46,19 @@ end
   | _EXCLAMATION_MARK { exclamation_mark_counter++; }
   ;
 
+/* -----------------------
+   Resenje: Zadatak 2
+   Prosirujemo words tako da osiguramo da na zarez ne bude pre _DOT
+   ----------------------- */
 words 
   : _CAPITAL_WORD
-  | words _WORD
-  | words _CAPITAL_WORD    
+  | words comma _WORD
+  | words comma _CAPITAL_WORD 
+  ;
+
+comma 
+  : /* empty */
+  | _COMMA
   ;
 
 %%

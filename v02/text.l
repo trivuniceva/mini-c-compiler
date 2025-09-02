@@ -17,7 +17,10 @@
 "?"         { return _QUESTION_MARK; }
 "!"         { return _EXCLAMATION_MARK; }
 
-
+  /* -----------------------
+   Resenje: Zadatak 2
+   ----------------------- */
+","         { return _COMMA; }
 
                      
 .           { printf("\nline %d: LEXICAL ERROR on char %c", 
