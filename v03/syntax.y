@@ -93,8 +93,18 @@ variable
    Resenje: Zadatak 1
    ----------------------- */
 vars 
+  : var
+  | vars _COMMA var // zamenjen _ID sa var zbog unsigned b = 5u, c = 10u;
+  ;
+
+ /* -----------------------
+   Deklaracija sa inicijalizacijom 
+   int a = 1; 
+   
+   ----------------------- */
+var 
   : _ID
-  | vars _COMMA _ID
+  | _ID _ASSIGN num_exp
   ;
 
 statement_list

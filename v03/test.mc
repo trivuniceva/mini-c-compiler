@@ -9,5 +9,9 @@ int abs(int i) {
 
 int main() {
   int a, b, c;
+
+  int a = 1; 
+  unsigned b = 5u, c = 10u;
+  
   return abs(-5);
 }
