@@ -24,6 +24,8 @@
 %token _AROP
 %token _RELOP
 
+%token _WHILE
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -84,7 +86,16 @@ statement
   | assignment_statement
   | if_statement
   | return_statement
+  | while_statement
   ;
+
+/* -----------------------
+   Resenje: Zadatak 1 - while
+   ----------------------- */
+while_statement
+  : _WHILE _LPAREN rel_exp _RPAREN statement
+  ;
+
 
 compound_statement
   : _LBRACKET statement_list _RBRACKET
