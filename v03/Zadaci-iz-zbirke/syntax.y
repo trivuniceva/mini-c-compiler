@@ -27,6 +27,15 @@
 %token _WHILE
 %token _BREAK
 
+%token _FOR 
+%token _INC 
+
+%token _ADDOP 
+%token _MULOP 
+
+%left _ADDOP
+%left _MULOP
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -89,13 +98,19 @@ statement
   | return_statement
   | while_statement
   | break_statement
+  | for_statement
+  | increment_statement
   ;
 
 /* -----------------------
    Resenje: Zadatak 1 - while
    ----------------------- */
 while_statement
-  : _WHILE _LPAREN rel_exp _RPAREN statement
+  : _WHILE condition statement
+  ;
+
+condition
+  : _LPAREN rel_exp _RPAREN
   ;
 
 /* -----------------------
@@ -103,6 +118,21 @@ while_statement
    ----------------------- */
 break_statement
   : _BREAK _SEMICOLON
+  ;
+
+/* -----------------------
+   Resenje: Zadatak 3 - for
+   ----------------------- */
+for_statement
+  : _FOR _LPAREN for_condition _RPAREN statement
+  ;
+
+for_condition
+  : assignment_statement rel_exp _SEMICOLON increment_statement 
+  ;
+
+increment_statement
+  : _ID _INC 
   ;
 
 compound_statement
@@ -113,14 +143,18 @@ assignment_statement
   : _ID _ASSIGN num_exp _SEMICOLON
   ;
 
+
+// _ADDOP imaju nizi prioritet od _MULOP
 num_exp
   : exp
-  | num_exp _AROP exp
+  | num_exp _ADDOP num_exp
+  | num_exp _MULOP num_exp
   ;
 
 exp
   : literal
   | _ID
+  | _ID _INC
   | function_call
   | _LPAREN num_exp _RPAREN
   ;

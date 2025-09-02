@@ -22,8 +22,10 @@
 ";"                  { return _SEMICOLON; }
 "="                  { return _ASSIGN; }
 
-"+"                  { return _AROP; }
-"-"                  { return _AROP; }
+"+"                  { return _ADDOP; }
+"-"                  { return _ADDOP; }
+"*"                  { return _MULOP; }
+"/"                  { return _MULOP; }
 
 "<"                  { return _RELOP; }
 ">"                  { return _RELOP; }
@@ -34,6 +36,9 @@
 
 "while"              { return _WHILE; }
 "break"              { return _BREAK; }
+
+"for"                { return _FOR; }
+"++"                 { return _INC; }
 
 [a-zA-Z][a-zA-Z0-9]* { return _ID; }
 [+-]?[0-9]{1,10}     { return _INT_NUMBER;}

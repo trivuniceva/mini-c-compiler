@@ -1,12 +1,12 @@
 
 int main() {
 
-  int a = 5;
-  int b;
+  int x = 5;
+  int y;
 
-  while(a > 0)
-    a = a- 1;
-    break;
+  for(a = 0; a < x; a++) 
+    y = y + a * 2;
+
 
   return 1;
 }
