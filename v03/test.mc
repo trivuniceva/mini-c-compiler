@@ -8,5 +8,6 @@ int abs(int i) {
 }
 
 int main() {
+  int a, b, c;
   return abs(-5);
 }
