@@ -30,6 +30,9 @@
 %token _FROM
 %token _WHERE
 
+%token _DO
+%token _WHILE
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -89,6 +92,7 @@ statement
   | if_statement
   | return_statement
   | select_statement
+  | do_while_statement
   ;
 
   /* -----------------------
@@ -100,6 +104,13 @@ select_statement
 
 condition
   : _LPAREN rel_exp _RPAREN
+  ;
+
+ /* -----------------------
+   Resenje: Zadatak 3
+   ----------------------- */
+do_while_statement
+  : _DO statement _WHILE condition _SEMICOLON
   ;
 
 compound_statement
