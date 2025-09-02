@@ -53,6 +53,9 @@ function_list
   | function_list function
   ;
 
+/* -----------------------
+   Resenje: Zadatak 6
+   ----------------------- */
 function
   : type _ID _LPAREN parameter _RPAREN body
   ;
@@ -63,7 +66,12 @@ type
 
 parameter
   : /* empty */
-  | type _ID
+  | params
+  ;
+
+params
+  : type _ID
+  | params _COMMA type _ID
   ;
 
 body
@@ -100,6 +108,7 @@ statement
   | select_statement
   | do_while_statement
   | for_statement
+  | function_call_statement
   ;
 
   /* -----------------------
@@ -165,9 +174,22 @@ function_call
   : _ID _LPAREN argument _RPAREN
   ;
 
+/* -----------------------
+   Resenje: Zadatak 6
+   ----------------------- */
+
+function_call_statement
+  : function_call _SEMICOLON // poziv funkcije kao iskaz
+  ;
+
 argument
   : /* empty */
-  | num_exp
+  | args
+  ;
+
+args 
+  : num_exp
+  | args _COMMA num_exp
   ;
 
 if_statement
