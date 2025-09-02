@@ -26,6 +26,10 @@
 
 %token _COMMA
 
+%token _SELECT
+%token _FROM
+%token _WHERE
+
 %nonassoc ONLY_IF
 %nonassoc _ELSE
 
@@ -84,6 +88,18 @@ statement
   | assignment_statement
   | if_statement
   | return_statement
+  | select_statement
+  ;
+
+  /* -----------------------
+   Resenje: Zadatak 2
+   ----------------------- */
+select_statement
+  : _SELECT vars _FROM _ID _WHERE condition _SEMICOLON
+  ;
+
+condition
+  : _LPAREN rel_exp _RPAREN
   ;
 
 compound_statement

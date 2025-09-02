@@ -34,6 +34,10 @@
 "=="                 { return _RELOP; }
 "!="                 { return _RELOP; }
 
+"select"             { return _SELECT; }
+"from"               { return _FROM; }
+"where"              { return _WHERE; }
+
 [a-zA-Z][a-zA-Z0-9]* { return _ID; }
 [+-]?[0-9]{1,10}     { return _INT_NUMBER;}
 [0-9]{1,10}[uU]      { return _UINT_NUMBER;}
